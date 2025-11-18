@@ -1,0 +1,93 @@
+---
+alwaysApply: true
+---
+
+# Project Standards & Conventions
+
+This file contains universal project standards and conventions that apply across all projects. For project-specific details (technology stack, frameworks, tools), **always read the project's README.md file first**.
+
+## Reading Project Documentation
+
+**CRITICAL:** Before starting any work, you MUST:
+1. Read the project's `README.md` file to understand:
+   - Technology stack and frameworks used
+   - Project structure and organization
+   - Development setup and requirements
+   - Project-specific conventions and preferences
+   - Any special instructions or notes
+
+2. Read the project's `.todo.md` file to understand:
+   - What has been worked on previously
+   - Current task context and history
+   - Completed and in-progress work
+   - Any ongoing plans or decisions
+
+3. Check for additional documentation in `/docs` folder if needed
+
+4. Follow the project's established patterns and conventions
+
+## Documentation Location
+
+**CRITICAL:** All documentation files MUST be created in the `/docs` folder. The only exception is `README.md` which should be in the project root.
+
+- All guides, tutorials, and how-to docs → `/docs`
+- All API documentation files → `/docs`
+- All architecture and design docs → `/docs`
+- All process and workflow docs → `/docs`
+- Project README → root `/README.md` (exception)
+
+When creating documentation, always use the path `/docs/[filename].md` (or appropriate subdirectory if organizing by category).
+
+## Universal Conventions
+
+### Git Workflow
+- Use conventional commits (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`)
+- Create feature branches for all changes
+- Never commit directly to `main`, `dev`, `master`, or `production` branches
+- Write atomic commits (one logical change per commit)
+
+### Task Management
+- Use `.todo.md` for all task planning
+- Append to `.todo.md` (keep history)
+- Include role assignments in task lists
+- Update checklist as tasks complete
+
+### Documentation Standards
+- Always include current date in documentation
+- Use clear, concise language
+- Include examples and code snippets when helpful
+- Keep documentation up-to-date with code changes
+
+## Best Practices
+
+1. **Always Plan First**: Use the workflow process (create `.todo.md`, plan, get approval)
+2. **Read the README**: Always check `README.md` for project-specific information
+3. **Use Personas**: Leverage the expert team for appropriate tasks
+4. **Document Decisions**: Record architectural and design decisions in `/docs`
+5. **Keep It Simple**: Avoid over-engineering; start simple, iterate
+6. **Security First**: Consider security implications in all code
+7. **Test Critical Paths**: Focus testing on what matters most
+8. **Maintain Clean History**: Use proper git workflow and commit messages
+
+## When Creating New Features
+
+Follow this standard workflow:
+1. Read `README.md` to understand project context
+2. Read `.todo.md` to understand what has been worked on and current context
+3. Product Manager → Define user stories and acceptance criteria
+4. Software Architect → Design system architecture
+5. Developer → Implement the feature (using project's tech stack from README)
+6. Code Reviewer → Review code quality
+7. QA Engineer → Write tests
+8. Security Analyst → Security review
+9. UI/UX Designer → UX review (if applicable)
+10. Technical Writer → Document in `/docs`
+
+## Notes for AI Agents
+
+- **Always read `README.md` first** for project-specific technology stack, frameworks, and conventions
+- **Always read `.todo.md`** to understand what has been worked on, current context, and work history
+- When creating files, follow the project structure (check README for details)
+- When writing code, follow the project's established patterns and conventions
+- When creating documentation, always place it in `/docs` (except root README.md)
+- When unsure about project specifics, refer to README.md or `.todo.md` or ask clarifying questions

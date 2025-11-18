@@ -1,0 +1,115 @@
+---
+alwaysApply: true
+---
+
+# CORE PROCESS: Pre-Task Planning & Role Assignment
+
+**MANDATORY FOR EVERY USER REQUEST:** This process applies to ALL prompts, regardless of complexity. 
+
+The ONLY exception is purely conversational responses (e.g., "how many rules do you have?").
+
+**APPLIES TO:**
+
+- Reading files
+- Writing code
+- Running commands
+- Searching codebase
+- Making any changes
+- Any task that requires tool usage
+
+**BEFORE executing ANY action, you MUST:**
+
+1. **Open/Create .todo.md:** FIRST, open or create the `.todo.md` file in the current directory.
+
+2. **Append only**: We should keep a history of what processes we have done.
+
+3. **Write Plan:** SECOND, write a clear `## Plan` section in that file, outlining the goal.
+
+4. **Clarify:** THIRD, ask me any clarifying questions needed to refine the plan.
+
+5. **Create Tasks:** FOURTH, list all steps as a checklist (`- [ ] Task...`) in a `## Tasks` section. 
+
+   For complex tasks, assign steps to relevant personas from the expert team. Use a **create-then-review** pattern:
+   - **Primary persona creates** the initial work
+   - **Review personas** then improve, validate, and enhance it
+   
+   **Typical Workflow Pattern:**
+   * `[ ] (Product Manager) Define user stories and acceptance criteria.`
+   * `[ ] (Software Architect) Design system architecture and data models.`
+   * `[ ] (JAMStack Developer) Implement the feature.`
+   * `[ ] (Code Reviewer) Review code for quality and best practices.`
+   * `[ ] (QA Engineer) Write tests and validate functionality.`
+   * `[ ] (Security Analyst) Review for security vulnerabilities.`
+   * `[ ] (UI/UX Designer) Review UI/UX and accessibility (if applicable).`
+   * `[ ] (Technical Writer) Document the feature.`
+   
+   **For simpler tasks**, use a minimal review cycle:
+   * `[ ] (JAMStack Developer) Write initial code.`
+   * `[ ] (Code Reviewer) Review code.`
+   * `[ ] (QA Engineer) Write tests.`
+
+6. **Get Approval:** FIFTH, you MUST ask me: "Here is the role-based plan in `.todo.md`. Please approve before I execute."
+
+7. **Execute:** SIXTH, proceed ONLY after receiving explicit user approval (e.g., "yes," "proceed," "ok").
+
+## Available Personas from Expert Team
+
+When creating tasks, reference these personas by name. The CEO orchestrator will route to the appropriate persona automatically.
+
+### Management & Strategy Personas
+- **Product Manager** (`product-manager.mdc`): User stories, problem definition, acceptance criteria, prioritization
+- **Software Architect** (`software-architect.mdc`): System design, architecture, data models, technical decisions
+- **CFO** (`cfo.mdc`): Financial analysis, ROI, cost-benefit, pricing
+- **VP of Growth** (`vp-of-growth.mdc`): Go-to-market strategy, user acquisition, monetization
+- **COO** (`coo.mdc`): Operational scaling, internal processes, execution readiness
+- **VC Partner** (`vc-partner.mdc`): High-level strategy, competitive moats, market defensibility
+
+### Technical Execution Personas
+- **JAMStack Developer** (`jamstack-developer.mdc`): Writing code, implementing features, technical implementation
+- **Code Reviewer** (`code-reviewer.mdc`): Code quality, maintainability, best practices review
+- **QA Engineer** (`qa-engineer.mdc`): Test planning, writing tests, quality assurance
+- **Security Analyst** (`security-analyst.mdc`): Security reviews, vulnerability assessment, authentication
+- **UI/UX Designer** (`ui-ux-designer.mdc`): UI/UX feedback, accessibility, usability improvements
+- **Technical Writer** (`technical-writer.mdc`): Documentation, API docs, code comments, README files
+- **DevOps Engineer** (`devops-engineer.mdc`): Deployment, CI/CD, Dockerfiles, infrastructure
+- **Git Workflow Specialist** (`git-workflow.mdc`): Git commits, branch management, commit messages
+
+## Persona Workflow Patterns
+
+**Full Feature Development:**
+1. Product Manager → defines requirements
+2. Software Architect → designs system
+3. JAMStack Developer → implements
+4. Code Reviewer → reviews code quality
+5. QA Engineer → writes tests
+6. Security Analyst → security review
+7. UI/UX Designer → UX review (if UI)
+8. Technical Writer → documents
+
+**Quick Bug Fix:**
+1. JAMStack Developer → fixes bug
+2. Code Reviewer → reviews fix
+3. QA Engineer → tests fix
+
+**New Feature Planning:**
+1. Product Manager → user stories
+2. CFO → cost analysis (if needed)
+3. Software Architect → technical design
+4. VP of Growth → GTM strategy (if needed)
+
+## Project Conventions
+
+**IMPORTANT:** 
+- For universal project standards, refer to `project-standards.mdc` which is always loaded
+- **For project-specific details (technology stack, frameworks, setup), always read the project's `README.md` file first**
+
+### Documentation Location
+**All documentation files MUST be created in the `/docs` folder.** The only exception is `README.md` which should be in the project root.
+
+- When any persona creates documentation (guides, API docs, architecture docs, etc.), it must go in `/docs`
+- Only `README.md` in the project root is the exception
+- This applies to all personas: Technical Writer, Software Architect, Product Manager, etc.
+
+As you complete tasks, you MUST update the `.todo.md` checklist (e.g., `- [x] Done`).
+
+**CRITICAL:** If you skip this process for any action-requiring request, you have violated this rule.
