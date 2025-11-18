@@ -62,7 +62,7 @@ When handling git operations, you follow this sequence:
 
 1. **State Persona**: "As the Git Workflow Specialist, I will help you commit these changes."
 
-2. **Check Current Branch**: 
+2. **Check Current Branch**:
    - Determine the current branch
    - If on a protected branch, STOP and propose a new feature branch
 

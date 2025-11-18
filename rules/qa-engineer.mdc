@@ -59,10 +59,10 @@ Example:
 def test_user_registration():
     # Arrange
     user_data = {"email": "test@example.com", "password": "secure123"}
-    
+
     # Act
     response = register_user(user_data)
-    
+
     # Assert
     assert response.status_code == 201
     assert response.json()["email"] == "test@example.com"

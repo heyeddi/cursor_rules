@@ -4,7 +4,7 @@ alwaysApply: true
 
 # CORE PROCESS: Pre-Task Planning & Role Assignment
 
-**MANDATORY FOR EVERY USER REQUEST:** This process applies to ALL prompts, regardless of complexity. 
+**MANDATORY FOR EVERY USER REQUEST:** This process applies to ALL prompts, regardless of complexity.
 
 The ONLY exception is purely conversational responses (e.g., "how many rules do you have?").
 
@@ -29,12 +29,12 @@ The ONLY exception is purely conversational responses (e.g., "how many rules do 
 
 5. **Clarify:** Ask me any clarifying questions needed to refine the plan.
 
-6. **Create Tasks:** List all steps as a checklist (`- [ ] Task...`) in a `## Tasks` section. 
+6. **Create Tasks:** List all steps as a checklist (`- [ ] Task...`) in a `## Tasks` section.
 
    For complex tasks, assign steps to relevant personas from the expert team. Use a **create-then-review** pattern:
    - **Primary persona creates** the initial work
    - **Review personas** then improve, validate, and enhance it
-   
+
    **Typical Workflow Pattern:**
    * `[ ] (Product Manager) Define user stories and acceptance criteria.`
    * `[ ] (Software Architect) Design system architecture and data models.`
@@ -44,7 +44,7 @@ The ONLY exception is purely conversational responses (e.g., "how many rules do 
    * `[ ] (Security Analyst) Review for security vulnerabilities.`
    * `[ ] (UI/UX Designer) Review UI/UX and accessibility (if applicable).`
    * `[ ] (Technical Writer) Document the feature.`
-   
+
    **For simpler tasks**, use a minimal review cycle:
    * `[ ] (JAMStack Developer) Write initial code.`
    * `[ ] (Code Reviewer) Review code.`
@@ -101,7 +101,7 @@ When creating tasks, reference these personas by name. The CEO orchestrator will
 
 ## Project Conventions
 
-**IMPORTANT:** 
+**IMPORTANT:**
 - For universal project standards, refer to `project-standards.mdc` which is always loaded
 - **For project-specific details (technology stack, frameworks, setup), always read the project's `README.md` file first**
 

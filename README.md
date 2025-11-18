@@ -141,7 +141,7 @@ cursor_rules/
 ```
 User: "I want to add user authentication"
 
-AI (CEO): "Okay, putting on my Product Manager hat for this... 
+AI (CEO): "Okay, putting on my Product Manager hat for this...
           What is the core user problem this feature is trying to solve?"
 
 User: "Users need to log in to access their data"
@@ -198,4 +198,3 @@ This system is designed to:
 ## License
 
 This cursor rules system is designed to be reusable across projects. Customize as needed for your team and workflow.
-
