@@ -21,13 +21,15 @@ The ONLY exception is purely conversational responses (e.g., "how many rules do 
 
 1. **Open/Create .todo.md:** FIRST, open or create the `.todo.md` file in the current directory.
 
-2. **Append only**: We should keep a history of what processes we have done.
+2. **Read learnings.md:** Check if `learnings.md` exists and read it to understand learned rules and preferences.
 
-3. **Write Plan:** SECOND, write a clear `## Plan` section in that file, outlining the goal.
+3. **Append only**: We should keep a history of what processes we have done.
 
-4. **Clarify:** THIRD, ask me any clarifying questions needed to refine the plan.
+4. **Write Plan:** Write a clear `## Plan` section in that file, outlining the goal.
 
-5. **Create Tasks:** FOURTH, list all steps as a checklist (`- [ ] Task...`) in a `## Tasks` section. 
+5. **Clarify:** Ask me any clarifying questions needed to refine the plan.
+
+6. **Create Tasks:** List all steps as a checklist (`- [ ] Task...`) in a `## Tasks` section. 
 
    For complex tasks, assign steps to relevant personas from the expert team. Use a **create-then-review** pattern:
    - **Primary persona creates** the initial work
@@ -48,9 +50,9 @@ The ONLY exception is purely conversational responses (e.g., "how many rules do 
    * `[ ] (Code Reviewer) Review code.`
    * `[ ] (QA Engineer) Write tests.`
 
-6. **Get Approval:** FIFTH, you MUST ask me: "Here is the role-based plan in `.todo.md`. Please approve before I execute."
+7. **Get Approval:** You MUST ask me: "Here is the role-based plan in `.todo.md`. Please approve before I execute."
 
-7. **Execute:** SIXTH, proceed ONLY after receiving explicit user approval (e.g., "yes," "proceed," "ok").
+8. **Execute:** Proceed ONLY after receiving explicit user approval (e.g., "yes," "proceed," "ok").
 
 ## Available Personas from Expert Team
 

@@ -22,9 +22,15 @@ This file contains universal project standards and conventions that apply across
    - Completed and in-progress work
    - Any ongoing plans or decisions
 
-3. Check for additional documentation in `/docs` folder if needed
+3. Read the project's `learnings.md` file (if it exists) to understand:
+   - Learned workflows and preferences
+   - Documented standard practices
+   - Project-specific rules and conventions
+   - Any processes that have been saved
 
-4. Follow the project's established patterns and conventions
+4. Check for additional documentation in `/docs` folder if needed
+
+5. Follow the project's established patterns and conventions
 
 ## Documentation Location
 
@@ -74,20 +80,22 @@ When creating documentation, always use the path `/docs/[filename].md` (or appro
 Follow this standard workflow:
 1. Read `README.md` to understand project context
 2. Read `.todo.md` to understand what has been worked on and current context
-3. Product Manager → Define user stories and acceptance criteria
-4. Software Architect → Design system architecture
-5. Developer → Implement the feature (using project's tech stack from README)
-6. Code Reviewer → Review code quality
-7. QA Engineer → Write tests
-8. Security Analyst → Security review
-9. UI/UX Designer → UX review (if applicable)
-10. Technical Writer → Document in `/docs`
+3. Read `learnings.md` (if exists) to understand learned rules and preferences
+4. Product Manager → Define user stories and acceptance criteria
+5. Software Architect → Design system architecture
+6. Developer → Implement the feature (using project's tech stack from README)
+7. Code Reviewer → Review code quality
+8. QA Engineer → Write tests
+9. Security Analyst → Security review
+10. UI/UX Designer → UX review (if applicable)
+11. Technical Writer → Document in `/docs`
 
 ## Notes for AI Agents
 
 - **Always read `README.md` first** for project-specific technology stack, frameworks, and conventions
 - **Always read `.todo.md`** to understand what has been worked on, current context, and work history
+- **Always read `learnings.md`** (if it exists) to understand learned rules, workflows, and preferences
 - When creating files, follow the project structure (check README for details)
 - When writing code, follow the project's established patterns and conventions
 - When creating documentation, always place it in `/docs` (except root README.md)
-- When unsure about project specifics, refer to README.md or `.todo.md` or ask clarifying questions
+- When unsure about project specifics, refer to README.md, `.todo.md`, or `learnings.md` or ask clarifying questions

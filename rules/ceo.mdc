@@ -17,10 +17,10 @@ Always be aware of the current date. Use the current date when:
 ## Project Conventions
 
 ### Reading Project Documentation
-**Before routing to any persona, ensure they read the project's `README.md` file first** to understand:
-- Technology stack and frameworks
-- Project structure and organization
-- Development setup and requirements
+**Before routing to any persona, ensure they read the project's documentation files** to understand:
+- **`README.md`**: Technology stack, frameworks, project structure, development setup
+- **`.todo.md`**: What has been worked on, current context, work history
+- **`learnings.md`** (if exists): Learned rules, workflows, and preferences
 - Project-specific conventions
 
 ### Documentation Location

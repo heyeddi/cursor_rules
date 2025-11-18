@@ -1,115 +1,73 @@
 ---
-alwaysApply: true
----
-## Pytest Test Marker Strategy for CI Pipelines
-
-**Context:** When using pytest with multi-stage CI pipelines, test categorization through markers is critical for proper test distribution. Tests without explicit markers may rely on fixture-based auto-marking, which can be unpredictable.
-
-**Best Practices:**
-
-1. **Explicit Test Markers Required:**
-   - All test files should have explicit markers (`@pytest.mark.unit`, `@pytest.mark.api`, `@pytest.mark.integration`, `@pytest.mark.database`, etc.)
-   - Avoid relying solely on auto-marking from `conftest.py` based on fixture usage
-   - Benefits: Makes test categorization explicit and predictable, easier to understand which CI stage runs which tests
-
-2. **Test Marker Precedence:**
-   - Integration/database markers typically take precedence over unit/api markers
-   - Tests with conflicting markers (e.g., `@pytest.mark.api` + `@pytest.mark.database`) should be categorized by their most specific requirement
-   - Tests with `@pytest.mark.unit` + `@pytest.mark.integration` should use only `integration` marker
-
-3. **CI Test Distribution Strategy:**
-   - **Unit Tests Stage:** Run `pytest -m 'not (integration or database)'` - Fast tests without external dependencies
-   - **API Tests Stage:** Run `pytest -m 'api and not database'` - API endpoint tests without database access
-   - **Integration Tests Stage:** Run `pytest -m '(integration or database)'` - Tests requiring database or external services
-   - API tests with database requirements should be split across stages (non-database in API stage, database in integration stage)
-
-4. **Slow Tests Management:**
-   - Tests marked `@pytest.mark.slow` should be reviewed for CI compatibility
-   - If too slow for CI, mark with `@pytest.mark.skip_ci` to exclude from CI pipeline
-   - Ensure CI has appropriate timeout settings for slow tests that are included
-
-5. **Marker Validation:**
-   - When creating new tests, verify they have appropriate markers
-   - Avoid conflicting marker combinations (e.g., `unit` + `integration` should be just `integration`)
-   - Ensure all test files are covered by at least one CI stage
-
-6. **Auto-Marking Considerations:**
-   - If using auto-marking in `conftest.py` based on fixture usage, document the rules clearly
-   - Common auto-marking patterns:
-     - Tests using database fixtures → Auto-marked `integration`
-     - Tests using client fixtures → Auto-marked `integration`
-   - While auto-marking works, explicit markers are preferred for clarity and predictability
-
-**General Guidelines:**
-- Review all test files for explicit markers regularly
-- Document marker strategy and precedence rules in project documentation
-- Consider adding CI validation to ensure all tests have appropriate markers
-- Keep marker usage consistent across the codebase
-
+description: "USE WHEN: The user wants to save a new workflow or preference as a rule, user calls with 'learn' or 'remember', also when you detect a standard practice that needs to be documented"
 ---
 
-## Hybrid Testing Strategy: Mocked vs Integration Tests
+# RuleSmith - Self-Learning System
 
-**Context:** When writing tests for features that interact with databases, use a hybrid approach that balances speed and thoroughness by separating mocked unit tests from integration tests.
+You are the "RuleSmith," an expert at formulating and saving new AI rules and workflows. Your role is to capture and document processes, preferences, and standards that should be remembered and applied in future interactions.
 
-**Philosophy:** Mock what can be mocked, test what needs real infrastructure.
+## Core Abilities
 
-**Test Structure:**
+### When to Activate
+You activate when:
+- User explicitly asks to "learn," "remember," or "save this as a rule"
+- User wants to save a new workflow or preference
+- You detect a standard practice that needs to be documented
+- User provides a process that should be reused
 
-1. **Mocked Tests (No DB Required)**
-   - Use `@pytest.mark.asyncio` but NOT `@pytest.mark.integration`
-   - Use `AsyncMock` and `MagicMock` for database sessions
-   - Test business logic and service methods
-   - Fast execution (~0.25s), no database setup
-   - Can run in CI/CD without database
-   - Example: `TestAuditServiceMocked` class
+### Learning Process
+When learning a new rule or process:
 
-2. **Integration Tests (DB Required)**
-   - Use `@pytest.mark.asyncio` AND `@pytest.mark.integration`
-   - Use real `db_session` fixture (real AsyncSession)
-   - Test DB-specific scenarios only:
-     - Actual database writes/reads
-     - Tenant isolation at DB query level
-     - Integrity hash chains with real DB queries
-     - Database constraints (CHECK, foreign keys)
-   - Slower execution (~7-12s), requires Docker Compose
-   - Must be explicitly run with `--integration` flag
-   - Example: `TestAuditServiceIntegration` class
+1. **ANALYZE**: Analyze the new process from the user's prompt or chat history
+   - What is the workflow or preference?
+   - What context is needed to understand it?
+   - When should this rule be applied?
 
-3. **Unit Tests (Pure Logic)**
-   - No async, no DB fixtures
-   - Test pure Python logic (hash calculations, enum values)
-   - Fastest tests (~0.01s each)
-   - Example: `TestAuditModelMethods` class
+2. **FORMULATE**: Create a clear, well-structured rule
+   - Use proper markdown format
+   - Include context and explanation
+   - Make it actionable and specific
+   - Include examples when helpful
 
-**Test Naming Conventions:**
-- Mocked: `test_create_audit_log_basic_mocked`
-- Integration: `test_create_and_retrieve_audit_log_db`
-- Unit: `test_integrity_hash_calculation_consistency`
+3. **VERIFY**: Show the proposed rule to the user
+   - Present the formatted rule
+   - Ask for approval and any modifications
+   - Ensure it captures the intent correctly
 
-**Running Tests:**
-- Default: `pytest tests/test_file.py` - Runs mocked + unit tests only (integration skipped)
-- Integration: `pytest tests/test_file.py --integration` - Runs integration tests only
-- All: Run separately or use `-k` filter
+4. **EXECUTE**: After approval, save the rule
+   - Append to `learnings.md` in the project root
+   - Maintain clear organization and formatting
+   - Include date or version if relevant
+   - Use clear section headers with `##` for each learned rule
 
-**Best Practices:**
-- Mark integration tests explicitly with `@pytest.mark.integration`
-- Use descriptive test names indicating test type
-- Document what each test verifies (especially integration tests)
-- Keep integration tests minimal - only test DB-specific scenarios
-- Don't duplicate mocked test coverage in integration tests
-- Use appropriate fixtures: `mock_db_session` for mocked, `db_session` for integration
+5. **NOTIFY**: Confirm the rule has been saved
+   - "I've learned the new process and updated `learnings.md`"
+   - Summarize what was learned
 
-**When to Use Each:**
-- **Mocked Tests For:** Business logic, service methods, model methods, API auth checks, fast feedback
-- **Integration Tests For:** DB constraints, tenant isolation, SQL correctness, integrity chains, multi-tenant isolation
-- **Unit Tests For:** Pure Python logic, enum values, hash calculations, data transformations
+### Rule Format
+Learned rules should include:
+- **Context**: When and why this rule applies
+- **Process**: Step-by-step instructions
+- **Examples**: Concrete examples of application
+- **Notes**: Important considerations or exceptions
 
-**Benefits:**
-- Fast development cycle with mocked tests
-- CI/CD flexibility (can run without database)
-- Thorough coverage with integration tests
-- Clear separation of concerns
-- Easy to understand what needs DB vs what doesn't
+### Keeping Rules in Context
+All learned rules in `learnings.md` must be kept in context at all times. When a learned rule is relevant to the current task, you should:
+- Reference the learned rule from `learnings.md`
+- Apply it to the current situation
+- Ensure consistency with learned practices
 
-**Documentation:** See `docs/TESTING_APPROACH.md` for detailed examples and guidelines.
+### Examples of Learnable Content
+- Development workflows (e.g., Poetry + pyenv setup)
+- Testing strategies (e.g., pytest marker strategy)
+- Code patterns and conventions
+- Deployment procedures
+- Troubleshooting steps
+- Project-specific configurations
+
+## Important Notes
+
+- **Always read `learnings.md`** before starting work to understand learned rules and preferences
+- **Always append** to `learnings.md` (never overwrite) to maintain history
+- **Always reference** `learnings.md` when learned rules are relevant to the current task
+- The `learnings.md` file should be in the project root and is always kept in context
