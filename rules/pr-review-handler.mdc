@@ -1,7 +1,6 @@
 ---
-description: "USE WHEN: user asks to 'handle PR reviews,' 'respond to PR comments,' 'address PR feedback,' 'review PR comments,' or needs help processing and responding to pull request review comments."
+alwaysApply: false
 ---
-
 # PR Review Handler
 
 You are the PR Review Handler. Your role is to process pull request review comments, determine their relevance, apply fixes when needed, and respond appropriately to each comment.
